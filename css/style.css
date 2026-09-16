@@ -1,0 +1,552 @@
+/* ============================================
+   RESET Y ESTILOS BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+    background: #282a36;
+    color: #f8f8f2;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+/* ============================================
+   NAVEGACIÓN - BOOTSTRAP NAVBAR ESTILO TERMINAL
+   ============================================ */
+#mainNavbar {
+    background: rgba(22, 27, 34, 0.85);
+    border-bottom: 1px solid #44475a;
+    backdrop-filter: blur(12px);
+    height: 64px;
+    transition: background 0.3s ease;
+}
+
+.logo {
+    color: #bd93f9 !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.logo::before {
+    content: '~/ ';
+    color: #6272a4;
+}
+
+#mainNavbar .nav-link {
+    color: #6272a4;
+    font-size: 0.95rem;
+    transition: color 0.25s ease;
+    position: relative;
+    margin: 0 0.4rem;
+}
+
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link.active {
+    color: #f8f8f2;
+}
+
+#mainNavbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0.75rem;
+    width: 0;
+    height: 2px;
+    background: #bd93f9;
+    transition: width 0.3s ease;
+}
+
+#mainNavbar .nav-link:hover::after,
+#mainNavbar .nav-link.active::after {
+    width: calc(100% - 1.5rem);
+}
+
+.navbar-toggler {
+    border-color: #44475a;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(189, 147, 249, 0.35);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(139, 148, 158, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991.98px) {
+    #mainNavbar .navbar-collapse {
+        background: #21222c;
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        margin-top: 0.75rem;
+        border: 1px solid #44475a;
+    }
+}
+
+/* Cuerpo con espacio para navbar fija */
+main {
+    padding-top: 64px;
+}
+
+/* ============================================
+   AVATAR / FOTO DE PERFIL
+   ============================================ */
+.avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    border: 3px solid #bd93f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(189, 147, 249, 0.3);
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    border-radius: 50%;
+}
+
+.avatar-container:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.avatar-overlay span {
+    font-size: 2rem;
+}
+
+.avatar-overlay p {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: #6272a4;
+}
+
+#avatarInput {
+    display: none;
+}
+
+/* ============================================
+   SECCIONES
+   ============================================ */
+.section {
+    padding: 4rem 0;
+}
+
+.section.alt-bg {
+    background: #21222c;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #f8f8f2;
+    border-bottom: 2px solid #44475a;
+    padding-bottom: 0.75rem;
+}
+
+.section-title::before {
+    content: '# ';
+    color: #ff79c6;
+}
+
+/* ============================================
+   HERO / INICIO
+   ============================================ */
+.hero {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #f8f8f2;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #6272a4;
+    margin-top: 0.5rem;
+}
+
+.hero-divider {
+    width: 80px;
+    height: 3px;
+    background: #bd93f9;
+    margin: 2rem auto;
+    border-radius: 4px;
+}
+
+.welcome-title {
+    font-size: 1.8rem;
+    color: #f8f8f2;
+    margin-bottom: 1rem;
+}
+
+.welcome-text {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #6272a4;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   SOBRE MÍ
+   ============================================ */
+.about-content {
+    max-width: 720px;
+}
+
+.about-content p {
+    margin-bottom: 1.2rem;
+    color: #f8f8f2;
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   ESTUDIOS - CARDS (Bootstrap .card)
+   ============================================ */
+.study-card {
+    background: #282a36;
+    border: 1px solid #44475a;
+    border-radius: 12px;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.study-card:hover {
+    border-color: #bd93f9;
+    transform: translateY(-4px);
+}
+
+.study-card .card-title {
+    font-size: 1.25rem;
+    color: #f8f8f2;
+    margin-bottom: 0.4rem;
+}
+
+.study-place {
+    color: #bd93f9;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.study-year {
+    color: #6272a4;
+    font-size: 0.85rem;
+    margin: 0.3rem 0 0.8rem;
+}
+
+.study-desc {
+    color: #f8f8f2;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   CONTACTO
+   ============================================ */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #282a36;
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #44475a;
+    transition: border-color 0.3s ease;
+}
+
+.contact-item:hover {
+    border-color: #bd93f9;
+}
+
+.contact-icon {
+    font-size: 1.3rem;
+}
+
+.contact-item span:last-child {
+    color: #f8f8f2;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   FORMULARIO DE CONTACTO
+   ============================================ */
+.contact-form {
+    background: #282a36;
+    border: 1px solid #44475a;
+    border-radius: 12px;
+    padding: 1.8rem;
+}
+
+.form-title {
+    color: #f8f8f2;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.contact-form .form-label {
+    color: #6272a4;
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+}
+
+.contact-form .form-control {
+    background: #21222c;
+    border: 1px solid #44475a;
+    color: #f8f8f2;
+    border-radius: 8px;
+}
+
+.contact-form .form-control::placeholder {
+    color: #6272a4;
+}
+
+.contact-form .form-control:focus {
+    background: #21222c;
+    color: #f8f8f2;
+    border-color: #bd93f9;
+    box-shadow: 0 0 0 0.2rem rgba(189, 147, 249, 0.25);
+}
+
+/* Estados de validación */
+.contact-form .form-control.is-valid {
+    border-color: #50fa7b;
+    background-image: none;
+}
+
+.contact-form .form-control.is-invalid {
+    border-color: #ff5555;
+    background-image: none;
+}
+
+.contact-form .invalid-feedback {
+    color: #ff5555;
+    font-size: 0.85rem;
+}
+
+.contact-form .valid-feedback {
+    color: #50fa7b;
+    font-size: 0.85rem;
+}
+
+.btn-enviar {
+    background: #50fa7b;
+    color: #282a36;
+    border: 2px solid #50fa7b;
+    border-radius: 10px;
+    padding: 0.65rem 1.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background: #69ff9b;
+    color: #282a36;
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(80, 250, 123, 0.4);
+}
+
+.btn-enviar:active {
+    transform: scale(0.97);
+}
+
+.form-feedback {
+    font-size: 0.95rem;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: none;
+}
+
+.form-feedback.show-success {
+    display: block;
+    background: rgba(80, 250, 123, 0.15);
+    border: 1px solid #50fa7b;
+    color: #50fa7b;
+}
+
+.form-feedback.show-error {
+    display: block;
+    background: rgba(255, 85, 85, 0.15);
+    border: 1px solid #ff5555;
+    color: #ff5555;
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+footer {
+    background: #21222c;
+    border-top: 1px solid #44475a;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer p {
+    color: #6272a4;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.footer-tags span {
+    background: #21262d;
+    color: #bd93f9;
+    padding: 0.25rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace;
+    border: 1px solid #44475a;
+}
+
+/* ============================================
+   BOTÓN DE DESCARGA
+   ============================================ */
+.download-section {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #50fa7b;
+    color: #282a36;
+    padding: 0.9rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid #50fa7b;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(80, 250, 123, 0.3);
+}
+
+.btn-download:hover {
+    background: #69ff9b;
+    color: #282a36;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(80, 250, 123, 0.5);
+}
+
+.btn-download:active {
+    transform: scale(0.95);
+}
+
+.download-info {
+    color: #6272a4;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+/* ============================================
+   ANIMACIONES "REVEAL" AL HACER SCROLL (jQuery)
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .avatar-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .btn-download {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
