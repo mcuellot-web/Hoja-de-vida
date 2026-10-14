@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Experiencias Profesionales",
+    "version": "1.0.0",
+    "description": "CRUD de experiencias profesionales para una hoja de vida"
+  },
+  "servers": [{ "url": "http://localhost:4000" }],
+  "tags": [{ "name": "Experiencias" }],
+  "paths": {
+    "/api/experiencias": {
+      "get": {
+        "tags": ["Experiencias"],
+        "summary": "Listar todas las experiencias",
+        "responses": {
+          "200": {
+            "description": "Lista de experiencias",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Experiencia" } }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Experiencias"],
+        "summary": "Crear una experiencia",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ExperienciaInput" } }
+          }
+        },
+        "responses": {
+          "201": { "description": "Experiencia creada" },
+          "400": { "description": "Datos inválidos" }
+        }
+      }
+    },
+    "/api/experiencias/{id}": {
+      "parameters": [
+        { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+      ],
+      "get": {
+        "tags": ["Experiencias"],
+        "summary": "Obtener una experiencia por ID",
+        "responses": {
+          "200": { "description": "Experiencia encontrada" },
+          "400": { "description": "ID inválido" },
+          "404": { "description": "No encontrada" }
+        }
+      },
+      "put": {
+        "tags": ["Experiencias"],
+        "summary": "Actualizar una experiencia",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ExperienciaInput" } }
+          }
+        },
+        "responses": {
+          "200": { "description": "Experiencia actualizada" },
+          "400": { "description": "Datos o ID inválidos" },
+          "404": { "description": "No encontrada" }
+        }
+      },
+      "delete": {
+        "tags": ["Experiencias"],
+        "summary": "Eliminar una experiencia",
+        "responses": {
+          "200": { "description": "Experiencia eliminada" },
+          "400": { "description": "ID inválido" },
+          "404": { "description": "No encontrada" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExperienciaInput": {
+        "type": "object",
+        "required": ["cargo", "empresa", "fechaInicio"],
+        "properties": {
+          "cargo": { "type": "string", "example": "Desarrollador Backend" },
+          "empresa": { "type": "string", "example": "Tech Caribe S.A.S." },
+          "ubicacion": { "type": "string", "example": "Cartagena, Colombia" },
+          "fechaInicio": { "type": "string", "format": "date", "example": "2024-02-01" },
+          "fechaFin": { "type": "string", "format": "date", "example": "2025-06-30" },
+          "actualmente": { "type": "boolean", "example": false },
+          "descripcion": { "type": "string", "example": "Desarrollo de APIs REST con Node.js y MongoDB." },
+          "logros": { "type": "array", "items": { "type": "string" }, "example": ["Reduje el tiempo de respuesta en 30%"] },
+          "tecnologias": { "type": "array", "items": { "type": "string" }, "example": ["Node.js", "Express", "MongoDB"] }
+        }
+      },
+      "Experiencia": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ExperienciaInput" },
+          {
+            "type": "object",
+            "properties": {
+              "_id": { "type": "string" },
+              "createdAt": { "type": "string", "format": "date-time" },
+              "updatedAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
